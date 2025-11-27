@@ -31,7 +31,7 @@ double forward(unsigned int N,           /* HMMの状態数               */
   ------------------------------------*/
   t = 0;
   for(i=0; i<N; i++) {
-    alpha[t][i] = /* fill in blank */;
+    alpha[t][i] = pi[i] * b[i][ O[t] ];
   }
     
   /*------------------------------------
@@ -41,17 +41,18 @@ double forward(unsigned int N,           /* HMMの状態数               */
     for(j=0; j<N; j++) {
       sum = 0;
       for(i=0; i<N; i++) {
-	sum += /* fill in blank */; 
+	sum += alpha[t][i] * a[i][j]; 
       }
-      alpha[t+1][j] = /* fill in blank */;
-    }
+      alpha[t+1][j] = sum * b[j][ O[t+1] ];
   }
 
   /*------------------------------------
     forward確率の計算
   ------------------------------------*/
   prob = 0.0;
-  /* fill in blank */
+  for(i=0; i<N; i++){
+    prob += alpha[T-1][i];
+  }
 
   return prob;
 }
