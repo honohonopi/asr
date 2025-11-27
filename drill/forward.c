@@ -45,6 +45,7 @@ double forward(unsigned int N,           /* HMMの状態数               */
       }
       alpha[t+1][j] = sum * b[j][ O[t+1] ];
   }
+}
 
   /*------------------------------------
     forward確率の計算
